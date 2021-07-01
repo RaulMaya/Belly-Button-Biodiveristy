@@ -26,7 +26,7 @@ d3.json(path).then(function(data) {
     console.log(metadata[i]);
   }
   ids.map(ids => {
-    dropdownMenu.append("option").text(ids);
+    dropdownMenu.append("optionChanged(this.value)").text(ids);
   });
 
 });
