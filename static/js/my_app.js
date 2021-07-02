@@ -31,8 +31,13 @@ d3.json(path).then(function(data) {
   names.map(names => {
     dropdownMenu.append("option").text(names);
   });
+  var selectedSubject = parseInt(dropdownMenu.property("value"));
+  var demographicInfo = d3.select("#sample-metadata");
+  demographicInfo.html("");
 
-  console.log(id_dict[941])
+  Object.entries(metadata[id_dict[selectedSubject]]).map(([key, value]) => {
+    demographicInfo.append("p").text(`${key}: ${value}`);
+  });
 
   dropdownMenu.on('change', runEnter);
   function runEnter() {
@@ -40,6 +45,7 @@ d3.json(path).then(function(data) {
       var selectedSubject = parseInt(dropdownMenu.property("value"));
       console.log(selectedSubject);
       console.log(metadata[id_dict[selectedSubject]]);
+
       var ethnicity = metadata[id_dict[selectedSubject]].ethnicity;
       var gender = metadata[id_dict[selectedSubject]].gender;
       var age = metadata[id_dict[selectedSubject]].age;
@@ -47,7 +53,7 @@ d3.json(path).then(function(data) {
       var type = metadata[id_dict[selectedSubject]].bbtype;
       var wfreq = metadata[id_dict[selectedSubject]].wfreq;
 
-      console.log(ethnicity);
+      console.log(Object.entries(metadata[id_dict[selectedSubject]]));
       console.log(gender);
       console.log(age);
       console.log(location);
@@ -56,6 +62,10 @@ d3.json(path).then(function(data) {
 
       var demographicInfo = d3.select("#sample-metadata");
       demographicInfo.html("");
-    }
+
+      Object.entries(metadata[id_dict[selectedSubject]]).map(([key, value]) => {
+        demographicInfo.append("p").text(`${key}: ${value}`);
+      });
+    };
 
 });
