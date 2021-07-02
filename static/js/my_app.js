@@ -12,7 +12,6 @@ var dropdownMenu = d3.select("#selDataset");
 var dataset = dropdownMenu.node().value;
 
 
-
 path = "data/samples.json";
 
 
@@ -53,12 +52,6 @@ d3.json(path).then(function(data) {
       var type = metadata[id_dict[selectedSubject]].bbtype;
       var wfreq = metadata[id_dict[selectedSubject]].wfreq;
 
-      console.log(Object.entries(metadata[id_dict[selectedSubject]]));
-      console.log(gender);
-      console.log(age);
-      console.log(location);
-      console.log(type);
-      console.log(wfreq);
 
       var demographicInfo = d3.select("#sample-metadata");
       demographicInfo.html("");
@@ -66,6 +59,45 @@ d3.json(path).then(function(data) {
       Object.entries(metadata[id_dict[selectedSubject]]).map(([key, value]) => {
         demographicInfo.append("p").text(`${key}: ${value}`);
       });
+
+      var otu_names = samples[id_dict[selectedSubject]].otu_ids;
+      var sample_value = samples[id_dict[selectedSubject]].sample_values;
+      var otu_label = samples[id_dict[selectedSubject]].otu_labels;
+      var otu_id_names = [];
+      for (let i = 0; i < otu_names.length; i++) {
+        otu_id_names.push(`otu ${otu_names[i]}`);
+      };
+      console.log(otu_id_names);
+      console.log(sample_value);
+
+      var sliced_otu_names = otu_id_names.slice(0,10).reverse();
+      var sliced_samples = sample_value.slice(0,10).reverse();
+      console.log(sliced_otu_names);
+      console.log(sliced_samples);
+
+      var trace1 = {
+          type: 'bar',
+          y: sliced_otu_names,
+          x: sliced_samples,
+          text: otu_label,
+          orientation : "h"
+        };
+
+      var data = [trace1]
+
+      var layout = {
+          title: {text: "Top 10 Bacteria Cultures Found",
+          font: {size: 20,
+              family: "Arial"},
+          y : .90
+            },
+          margin: { l: 100, r: 10, t: 100, b: 50 }
+
+        };
+
+
+      Plotly.newPlot('bar', data, layout);
+
     };
 
 });
