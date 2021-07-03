@@ -120,7 +120,6 @@ d3.json(path).then(function(data) {
                     value: wfreq
                     }
                   },
-              text: ['TEST'],
               textposition: 'top',
               value: wfreq,
               title: { text: "Belly Button Scrubs per Week" ,
