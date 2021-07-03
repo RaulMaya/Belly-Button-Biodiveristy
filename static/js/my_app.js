@@ -98,6 +98,46 @@ d3.json(path).then(function(data) {
 
       Plotly.newPlot('bar', data, layout);
 
+      var data = [
+          {
+              domain: { x: [0, 1], y: [0, 1] },
+              delta: {'reference': 400, 'increasing': {'color': "RebeccaPurple"}},
+              gauge: {
+                  axis: { range: [null, 9],
+                      bar:{color:"darkblue"},
+                      bgcolor:"white",
+                      borderwidth: 2,
+                      bordercolor:"gray",
+                      tickmode:"linear",
+                      tick0: 1,
+                      dtick: 1,
+                      steps: [{'range': [0, 250], 'color': 'cyan'},
+                      {'range': [250, 400], 'color': 'royalblue'}]
+                  },
+                  threshold: {
+                    line: {'color': "red", 'width': 4},
+                    thickness: 0.75,
+                    value: wfreq
+                    }
+                  },
+              text: ['TEST'],
+              textposition: 'top',
+              value: wfreq,
+              title: { text: "Belly Button Scrubs per Week" ,
+              font: {size: 20,
+                  family: "Arial"}
+                },
+              type: "indicator",
+              mode: "gauge+number"
+          }
+      ];
+
+      var layout = {margin: { l: 20, r: 20, t: 20, b: 20 },
+    paper_bgcolor:"lavender",
+    font:{'color': "darkblue", 'family': "Arial"} };
+
+      Plotly.newPlot('gauge', data, layout);
+
     };
 
 });
