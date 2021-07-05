@@ -72,15 +72,15 @@ d3.json(path).then(function(data) {
       text: otu_label,
       orientation : "h",
       marker:{color: ['rgba(204,204,204,1)',
-      'lightgreen',
+      'chartreuse',
       'rgba(204,204,204,1)',
-      'lightgreen',
+      'chartreuse',
       'rgba(204,204,204,1)',
-      'lightgreen',
+      'chartreuse',
       'rgba(204,204,204,1)',
-      'lightgreen',
+      'chartreuse',
       'rgba(204,204,204,1)',
-      'lightgreen']},
+      'chartreuse']},
     };
 
   var data = [trace1]
@@ -88,9 +88,11 @@ d3.json(path).then(function(data) {
   var layout = {
       title: {text: "Top 10 Bacteria Cultures Found",
       font: {size: 20,
-          family: "Arial"},
+          family: "Arial",
+        color:"forestgreen"},
       y : .90
         },
+      paper_bgcolor: "ivory",
       margin: { l: 100, r: 10, t: 100, b: 50 }
     };
 
@@ -106,7 +108,7 @@ d3.json(path).then(function(data) {
           title: { text: "Belly Button Scrubs Per Week",font: {size: 20, family: "Arial"}},
           gauge: {
             axis: { range: [null, 9], tickwidth: 1, tickcolor: "red" },
-            bar: { color: "lightgreen" },
+            bar: { color: "chartreuse" },
             bgcolor: "black",
             borderwidth: 2,
             bordercolor: "gray",
@@ -146,9 +148,11 @@ d3.json(path).then(function(data) {
   var layout = {
       title: {text: 'Bacteria Cultures Per Sample',
       font: {size: 18,
-          family: "Arial"},
+          family: "Arial",
+        color:"forestgreen"},
       y : .85
           },
+      paper_bgcolor: "ivory",
       xaxis: { title: "OTUs ID" }
     };
 
@@ -203,15 +207,15 @@ d3.json(path).then(function(data) {
           text: otu_label,
           orientation : "h",
           marker:{color: ['rgba(204,204,204,1)',
-          'lightgreen',
+          'chartreuse',
           'rgba(204,204,204,1)',
-          'lightgreen',
+          'chartreuse',
           'rgba(204,204,204,1)',
-          'lightgreen',
+          'chartreuse',
           'rgba(204,204,204,1)',
-          'lightgreen',
+          'chartreuse',
           'rgba(204,204,204,1)',
-          'lightgreen']},
+          'chartreuse']},
         };
 
       var data = [trace1]
@@ -219,10 +223,12 @@ d3.json(path).then(function(data) {
       var layout = {
           title: {text: "Top 10 Bacteria Cultures Found",
           font: {size: 20,
-              family: "Arial"},
+              family: "Arial",
+            color:"forestgreen"},
           y : .90
             },
-          margin: { l: 100, r: 10, t: 100, b: 50 }
+          margin: { l: 100, r: 10, t: 100, b: 50 },
+          paper_bgcolor: "ivory"
         };
 
 
@@ -237,7 +243,7 @@ d3.json(path).then(function(data) {
               title: { text: "Belly Button Scrubs Per Week",font: {size: 20, family: "Arial"}},
               gauge: {
                 axis: { range: [null, 9], tickwidth: 1, tickcolor: "red" },
-                bar: { color: "lightgreen" },
+                bar: { color: "chartreuse" },
                 bgcolor: "black",
                 borderwidth: 2,
                 bordercolor: "gray",
@@ -277,10 +283,12 @@ d3.json(path).then(function(data) {
       var layout = {
           title: {text: 'Bacteria Cultures Per Sample',
           font: {size: 18,
-              family: "Arial"},
+              family: "Arial",
+            color:"forestgreen"},
           y : .85
               },
-          xaxis: { title: "OTUs ID" }
+          xaxis: { title: "OTUs ID" },
+          paper_bgcolor: "ivory"
         };
 
       Plotly.newPlot('bubble', data, layout);
